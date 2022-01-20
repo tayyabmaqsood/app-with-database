@@ -2,14 +2,17 @@ package haqnawaz.org.sqlitedb20211216;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -55,9 +58,15 @@ public class MainActivity extends AppCompatActivity {
                 List<StudentModel> list = dbHelper.getAllStudents();
                 ArrayAdapter arrayAdapter = new ArrayAdapter<StudentModel>(MainActivity.this, android.R.layout.simple_list_item_1,list);
                 listViewStudent.setAdapter(arrayAdapter);
+            }
+        });
 
-
-
+        listViewStudent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), editDeleteActivity.class);
+                intent.putExtra("LISTVIEW", ((TextView)view).getText().toString());
+                startActivity(intent);
             }
         });
 
