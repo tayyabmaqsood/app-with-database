@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 DbHelper dbHelper = new DbHelper(MainActivity.this);
                  dbHelper.addStudent(studentModel);
+                editAge.setText("");
+                editName.setText("");
             }
         });
 
@@ -88,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
         List<StudentModel> list = dbHelper.getAllStudents();
         ArrayAdapter arrayAdapter = new ArrayAdapter<StudentModel>(MainActivity.this, android.R.layout.simple_list_item_1,list);
         listViewStudent.setAdapter(arrayAdapter);
+        editAge.setText("");
+        editName.setText("");
     }
 
     public void deleteStudent(View view) {
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter<StudentModel>(MainActivity.this, android.R.layout.simple_list_item_1,list);
         listViewStudent.setAdapter(arrayAdapter);
 
-
+        editAge.setText("");
+        editName.setText("");
     }
 }

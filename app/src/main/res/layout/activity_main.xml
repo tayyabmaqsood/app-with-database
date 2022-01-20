@@ -50,57 +50,54 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="188dp"
         android:text="@string/Add"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonViewAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="31dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="9dp"
         android:text="@string/ButtonViewAll"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonAdd"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
         android:id="@+id/editStudent"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="7dp"
+        android:layout_height="wrap_content"
         android:onClick="editStudentfun"
         android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="@+id/deleteStudentbtn"
-        app:layout_constraintStart_toStartOf="@+id/buttonAdd"
-        app:layout_constraintTop_toBottomOf="@+id/buttonViewAll"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/deleteStudentbtn"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAdd" />
 
     <Button
         android:id="@+id/deleteStudentbtn"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="41dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:onClick="deleteStudent"
         android:text="Delete"
-        app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonViewAll"
-        app:layout_constraintTop_toTopOf="@+id/buttonViewAll" />
+        app:layout_constraintStart_toStartOf="@+id/buttonViewAll"
+        app:layout_constraintTop_toBottomOf="@+id/buttonViewAll" />
 
-    <ListView
-        android:id="@+id/listViewStudent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="276dp"
+        android:layout_height="265dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ListView
+            android:id="@+id/listViewStudent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
