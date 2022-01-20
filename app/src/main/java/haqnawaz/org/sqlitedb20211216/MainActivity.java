@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,9 +16,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    static  int id = 0;
     Button buttonAdd, buttonViewAll;
     EditText editName, editAge;
     Switch switchIsActive;
@@ -36,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             StudentModel studentModel;
-
             @Override
             public void onClick(View v) {
                 try {
@@ -64,11 +67,42 @@ public class MainActivity extends AppCompatActivity {
         listViewStudent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), editDeleteActivity.class);
-                intent.putExtra("LISTVIEW", ((TextView)view).getText().toString());
-                startActivity(intent);
+                StudentModel studentModelList = (StudentModel) parent.getItemAtPosition(position);
+                Log.d("String",parent.getItemAtPosition(position).toString());
+                editName.setText(studentModelList.getName());
+                editAge.setText(Integer.toString(studentModelList.getAge()));
             }
         });
+
+    }
+
+    public void editStudentfun(View view) {
+        EditText editName = findViewById(R.id.editTextName);
+        EditText editAge = findViewById(R.id.editTextAge);
+        Switch switchIsActive = findViewById(R.id.switchStudent);
+
+        StudentModel studentModelEdit = new StudentModel(editName.getText().toString(), Integer.parseInt(editAge.getText().toString()), switchIsActive.isChecked());
+
+        DbHelper dbHelper = new DbHelper(MainActivity.this);
+        dbHelper.editStudent(studentModelEdit);
+        List<StudentModel> list = dbHelper.getAllStudents();
+        ArrayAdapter arrayAdapter = new ArrayAdapter<StudentModel>(MainActivity.this, android.R.layout.simple_list_item_1,list);
+        listViewStudent.setAdapter(arrayAdapter);
+    }
+
+    public void deleteStudent(View view) {
+        EditText editName = findViewById(R.id.editTextName);
+        EditText editAge = findViewById(R.id.editTextAge);
+        Switch switchIsActive = findViewById(R.id.switchStudent);
+
+        StudentModel studentModelEdit = new StudentModel(editName.getText().toString(), Integer.parseInt(editAge.getText().toString()), switchIsActive.isChecked());
+
+        DbHelper dbHelper = new DbHelper(MainActivity.this);
+        dbHelper.deleteStudent(studentModelEdit);
+        List<StudentModel> list = dbHelper.getAllStudents();
+        ArrayAdapter arrayAdapter = new ArrayAdapter<StudentModel>(MainActivity.this, android.R.layout.simple_list_item_1,list);
+        listViewStudent.setAdapter(arrayAdapter);
+
 
     }
 }

@@ -6,58 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/StudentName"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
-
-    <EditText
-        android:id="@+id/editTextAge"
-        android:layout_width="405dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="4dp"
-        android:ems="10"
-        android:hint="@string/Age"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="53dp" />
-
-    <Switch
-        android:id="@+id/switchStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:showText="true"
-        android:text="@string/ActiveCustomer"
-        android:visibility="visible"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="9dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/buttonViewAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ButtonViewAll"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="157dp" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:hint="@string/StudentName"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/Age"
+            android:inputType="number" />
+
+        <Switch
+            android:id="@+id/switchStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginBottom="19dp"
+            android:showText="true"
+            android:text="@string/ActiveCustomer"
+            android:visibility="visible" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="176dp"
         android:text="@string/Add"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="157dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonViewAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="31dp"
+        android:text="@string/ButtonViewAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/editStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="7dp"
+        android:onClick="editStudentfun"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteStudentbtn"
+        app:layout_constraintStart_toStartOf="@+id/buttonAdd"
+        app:layout_constraintTop_toBottomOf="@+id/buttonViewAll"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/deleteStudentbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="41dp"
+        android:onClick="deleteStudent"
+        android:text="Delete"
+        app:layout_constraintBottom_toTopOf="@+id/listViewStudent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonViewAll"
+        app:layout_constraintTop_toTopOf="@+id/buttonViewAll" />
 
     <ListView
         android:id="@+id/listViewStudent"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="205dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

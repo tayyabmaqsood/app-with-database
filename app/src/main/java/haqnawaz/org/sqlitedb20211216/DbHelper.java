@@ -54,6 +54,33 @@ public class DbHelper extends SQLiteOpenHelper {
         //else{return true;}
     }
 
+    public void  editStudent(StudentModel STUDENTModel){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Hash map, as we did in bundles
+        ContentValues cv = new ContentValues();
+
+        cv.put(STUDENT_NAME, STUDENTModel.getName());
+        cv.put(STUDENT_AGE, STUDENTModel.getAge());
+        cv.put(ACTIVE_STUDENT, STUDENTModel.isActive());
+        db.update(STUDENT_TABLE, cv, "STUDENTName = ?", new String[]{STUDENTModel.getName()});
+        db.close();
+
+    }
+
+
+    public void deleteStudent(StudentModel STUDENTMODEL){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Hash map, as we did in bundles
+        ContentValues cv = new ContentValues();
+
+        cv.put(STUDENT_NAME, STUDENTMODEL.getName());
+        cv.put(STUDENT_AGE, STUDENTMODEL.getAge());
+        cv.put(ACTIVE_STUDENT, STUDENTMODEL.isActive());
+        if (STUDENTMODEL.getId() != -1)
+            db.delete(STUDENT_TABLE, "STUDENTName = ? ", new String[]{STUDENTMODEL.getName()});
+        db.close();
+    }
+
     public ArrayList<StudentModel> getAllStudents() {
 
         SQLiteDatabase db = this.getReadableDatabase();
