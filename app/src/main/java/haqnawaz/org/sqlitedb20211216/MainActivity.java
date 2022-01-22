@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateRecyclerView(){
         DbHelper dbHelper = new DbHelper(MainActivity.this);
         List<StudentModel> list = dbHelper.getAllStudents();
-        adapter = new MyAdapter(list, getApplicationContext());
+        adapter = new MyAdapter(list, MainActivity.this);
         recyclerView.setAdapter(adapter);
     }
 }
