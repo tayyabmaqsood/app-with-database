@@ -47,11 +47,6 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(ACTIVE_STUDENT, STUDENTModel.isActive());
         db.insert(STUDENT_TABLE, null, cv);
         db.close();
-
-        //NullCoumnHack
-        //long insert =
-        //if (insert == -1) { return false; }
-        //else{return true;}
     }
 
     public void  editStudent(StudentModel STUDENTModel){
