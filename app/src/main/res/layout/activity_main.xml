@@ -99,5 +99,12 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studentRecyclerView"
+        android:layout_width="409dp"
+        android:layout_height="163dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="326dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
